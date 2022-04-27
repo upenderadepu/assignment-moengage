@@ -17,27 +17,3 @@ module "ec2" {
   key_name   = module.ssh-key.key_name
 }
 
-
-/*
-resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "terraform-up-and-running-locks"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}
-
-terraform {
-  backend "s3" {
-    # Replace this with your bucket name!
-    bucket         = "terraform-up-and-running-statefiles"
-    key            = "global/s3/terraform.tfstate"
-    region         = "ap-south-1"
-    # Replace this with your DynamoDB table name!
-  #  dynamodb_table = "terraform-up-and-running-locks"
-    encrypt        = true
-  }
-}
-*/
