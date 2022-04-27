@@ -8,9 +8,11 @@ An SSH key pair is dynamically generated as well, and the private key is copied 
 The ec2 instance in the public subnet is assigned a security group with access from the
 the intenret via port 22, 80 and 443.
 
+Both security groups are dynamically created in the network module.
+
 userdata.tpl has the code snippet to install the nginx and to bring up the service.
 
-Both security groups are dynamically created in the network module.
+script.sh will execute post creation of ec2 and this will generate self-signed certificates.
 
 ## Current state
 
@@ -56,4 +58,4 @@ $ terraform destroy
 
 Validation can be performed using curl or via browser
 
-- curl <Public IP>
+- curl public_ip

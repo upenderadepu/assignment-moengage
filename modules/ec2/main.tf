@@ -17,6 +17,7 @@ resource "aws_instance" "ec2_public" {
   ami                         = data.aws_ami.amazon-linux-2.id
   associate_public_ip_address = true
   instance_type               = "t2.micro"
+  iam_instance_profile        = "${aws_iam_instance_profile.test_profile.name}"
   key_name                    = var.key_name
   subnet_id                   = var.vpc.public_subnets[0]
   vpc_security_group_ids      = [var.sg_pub_id]
@@ -60,4 +61,22 @@ resource "aws_instance" "ec2_public" {
 
   }
 
+  provisioner "file" {
+    source      = "./modules/ec2/script.sh"
+    destination = "/tmp/script.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = ["chmod +x /tmp/script.sh", "sudo /tmp/script.sh"]
+  }
+
+    connection {
+      type        = "ssh"
+      user        = "ec2-user"
+      private_key = file("${var.key_name}.pem")
+      host        = self.public_ip
+    }
+  
+
 }
+
