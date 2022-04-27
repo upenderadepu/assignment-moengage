@@ -1,4 +1,4 @@
-# Creat EC2 with Terraform and install nginx to serve a "Hello World" HTML page
+# Create EC2 with Terraform which includes in installing nginx to serve a "Hello World" HTML page
 
 This will create a VCP with Internet Gateway, subnets
 
