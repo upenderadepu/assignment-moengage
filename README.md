@@ -1,9 +1,9 @@
-# AWS VPC Creation with Terraform
+# Creat EC2 with Terraform and install nginx to serve a "Hello World" HTML page
 
-This project will create a VCP with Internet Gateway, subnets
+This will create a VCP with Internet Gateway, subnets
 
 An SSH key pair is dynamically generated as well, and the private key is copied over to the
-bastion host.
+ host.
 
 The ec2 instance in the public subnet is assigned a security group with access from the
 the intenret via port 22, 80 and 443.
@@ -51,3 +51,9 @@ $ terraform destroy
 | Name | Description |
 |------|-------------|
 | public\_connection\_string | Copy/Paste/Enter - You are in the matrix |
+
+## Result
+
+Validation can be performed using curl or via browser
+
+- curl <Public IP>
