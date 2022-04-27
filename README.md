@@ -1,11 +1,14 @@
 # AWS VPC Creation with Terraform
-This project will create a VCP with Internet Gateway, subnets 
+
+This project will create a VCP with Internet Gateway, subnets
 
 An SSH key pair is dynamically generated as well, and the private key is copied over to the
 bastion host.
 
-The ec2 instance in the public subnet is assigned a security group with access from the 
+The ec2 instance in the public subnet is assigned a security group with access from the
 the intenret via port 22, 80 and 443.
+
+userdata.tpl has the code snippet to install the nginx and to bring up the service.
 
 Both security groups are dynamically created in the network module.
 
@@ -24,9 +27,27 @@ Modules:
 | namespace | The project namespace to use for unique resource naming | `string` | `"moengage-terraform"` | no |
 | region | AWS region | `string` | `"ap-south-1"` | no |
 
+## Run
+
+```bash
+# init modules
+$ terraform init
+
+# validate configuration
+$ terraform validate
+
+# plan configuration
+$ terraform plan
+
+# apply configuration
+$ terraform apply
+
+# destroy configuration
+$ terraform destroy
+```
+
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| public\_connection\_string | Copy/Paste/Enter |
-
+| public\_connection\_string | Copy/Paste/Enter - You are in the matrix |
